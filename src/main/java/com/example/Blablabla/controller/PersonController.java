@@ -20,7 +20,7 @@ public class PersonController {
     }
 
     @GetMapping("/persons")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER')")
     public List<PersonDto> findAll() {
         return personService.findAll();
     }
