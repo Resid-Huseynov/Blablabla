@@ -20,12 +20,13 @@ public class PersonController {
     }
 
     @GetMapping("/persons")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('USER') || hasRole('MANAGER') || hasRole('ADMIN')")
     public List<PersonDto> findAll() {
         return personService.findAll();
     }
 
     @GetMapping("persons/{personId}")
+    @PreAuthorize("hasRole('USER') || hasRole('MANAGER') || hasRole('ADMIN')")
     public PersonDto findById (@PathVariable int personId) {
 
         PersonDto thePersonDto = personService.findById(personId);
@@ -37,6 +38,7 @@ public class PersonController {
     }
 
     @PostMapping("/person/add")
+    @PreAuthorize("hasRole('MANAGER') || hasRole('ADMIN')")
     public PersonDto addPerson(@RequestBody PersonDto thePersonDto) {
 
         thePersonDto.setId(0);
@@ -46,6 +48,7 @@ public class PersonController {
     }
 
     @PutMapping("/person")
+    @PreAuthorize("hasRole('MANAGER') || hasRole('ADMIN')")
     public PersonDto updatePerson(@RequestBody PersonDto thePersonDto) {
 
         PersonDto dbPersonDto = personService.save(thePersonDto);
@@ -53,6 +56,7 @@ public class PersonController {
     }
 
     @DeleteMapping("/person/{personId}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String deletePerson(@PathVariable int personId) {
 
         PersonDto tempPersonDto = personService.findById(personId);
