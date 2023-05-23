@@ -29,7 +29,7 @@ public class AuthController {
     @Autowired
     private JwtUtils jwtUtils;
 
-    @GetMapping("/api/auth/login")
+    @GetMapping("/login")
     public ResponseEntity<String> getToken(@RequestBody AuthenticationDto registerDto) {
 
         Authentication authentication = authenticationManager.authenticate(

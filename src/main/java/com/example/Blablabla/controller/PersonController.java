@@ -2,6 +2,7 @@ package com.example.Blablabla.controller;
 
 import com.example.Blablabla.dto.PersonDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.example.Blablabla.service.PersonService;
 
@@ -19,6 +20,7 @@ public class PersonController {
     }
 
     @GetMapping("/persons")
+    @PreAuthorize("hasRole('ADMIN')")
     public List<PersonDto> findAll() {
         return personService.findAll();
     }
