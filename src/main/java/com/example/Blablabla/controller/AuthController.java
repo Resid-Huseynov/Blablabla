@@ -1,6 +1,7 @@
 package com.example.Blablabla.controller;
 
 import com.example.Blablabla.dto.AuthenticationDto;
+import com.example.Blablabla.dto.JwtResponseDto;
 import com.example.Blablabla.repository.RoleRepository;
 import com.example.Blablabla.repository.UserRepository;
 import com.example.Blablabla.security.JwtUtils;
@@ -28,12 +29,14 @@ public class AuthController {
 
 //    @GetMapping("/login")
     @PostMapping("/login")
-    public ResponseEntity<String> getToken(@RequestBody AuthenticationDto registerDto) {
+    public ResponseEntity<JwtResponseDto> getToken(@RequestBody AuthenticationDto registerDto) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(registerDto.getUsername(), registerDto.getPassword()));
 
         String jwt = jwtUtils.generateJwtToken(authentication);
-        return ResponseEntity.ok(jwt);
+
+        JwtResponseDto jwtResponseDto = new JwtResponseDto(jwt);
+        return ResponseEntity.ok(jwtResponseDto);
     }
 }
