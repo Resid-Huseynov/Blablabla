@@ -1,16 +1,15 @@
 package com.example.Blablabla.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "roles")
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Role implements GrantedAuthority {
 
     @Id

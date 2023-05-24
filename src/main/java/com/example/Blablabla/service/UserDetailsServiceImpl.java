@@ -2,6 +2,7 @@ package com.example.Blablabla.service;
 
 import com.example.Blablabla.entity.User;
 import com.example.Blablabla.repository.UserRepository;
+import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (user==null){
             throw new UsernameNotFoundException("User : " + username + "not found!");
         }
-        System.out.println(user);
+        System.out.println(new Gson().toJson(user));
 
         return user;
     }

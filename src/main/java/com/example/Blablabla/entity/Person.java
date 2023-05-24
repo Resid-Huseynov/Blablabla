@@ -25,6 +25,9 @@ public class Person {
     @JoinColumn(name = "person_id")
     private List<PhoneNumber> phoneNumbers;
 
+    @Column(name = "is_active")
+    private int isActive;
+
     public Person() {
     }
 
@@ -70,6 +73,14 @@ public class Person {
 
     public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
         this.phoneNumbers = phoneNumbers;
+    }
+
+    public int getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(int isActive) {
+        this.isActive = isActive;
     }
 
     @Override
