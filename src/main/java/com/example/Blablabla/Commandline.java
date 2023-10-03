@@ -1,6 +1,5 @@
 package com.example.Blablabla;
 
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
